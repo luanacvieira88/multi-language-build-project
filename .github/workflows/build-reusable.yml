@@ -1,0 +1,119 @@
+name: Build Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        description: 'Programming language for the build'
+        required: true
+        type: string
+      environment:
+        description: 'Deployment environment'
+        required: true
+        type: string
+    secrets:
+      SONAR_TOKEN:
+        required: true
+      SNYK_TOKEN:
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up environment and install dependencies
+        run: |
+          case "${{ inputs.language }}" in
+            "node")
+              echo "Setting up Node.js..."
+              actions/setup-node@v3
+              npm install
+              ;;
+
+            "java")
+              echo "Setting up Java..."
+              actions/setup-java@v3
+              java-version: '11'
+              mvn clean install
+              ;;
+
+            "dotnet")
+              echo "Setting up .NET..."
+              actions/setup-dotnet@v3
+              dotnet-version: '6.0.x'
+              dotnet restore
+              dotnet build
+              ;;
+
+            "php")
+              echo "Setting up PHP..."
+              sudo apt-get install php-cli php-mbstring -y
+              composer install
+              ;;
+
+            "python")
+              echo "Setting up Python..."
+              actions/setup-python@v3
+              python-version: '3.9'
+              pip install -r requirements.txt
+              ;;
+
+            "ruby")
+              echo "Setting up Ruby..."
+              actions/setup-ruby@v3
+              ruby-version: '2.7'
+              bundle install
+              ;;
+
+            "go")
+              echo "Setting up Go..."
+              actions/setup-go@v3
+              go-version: '1.16'
+              go mod tidy
+              ;;
+              
+            *)
+              echo "Language not supported!"
+              exit 1
+              ;;
+          esac
+
+      - name: Run unit tests
+        run: |
+          case "${{ inputs.language }}" in
+            "node") npm test ;;
+            "java") mvn test ;;
+            "dotnet") dotnet test ;;
+            "php") vendor/bin/phpunit ;;
+            "python") python -m unittest discover ;;
+            "ruby") bundle exec rspec ;;
+            "go") go test ./... ;;
+          esac
+
+      - name: Run SonarQube scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Run security scan (optional)
+        if: secrets.SNYK_TOKEN != ''
+        uses: snyk/snyk@v2
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: "${{ inputs.language }}-build"
+          path: |
+            ./java/target/*.jar         # Java
+            ./nodejs/node_modules/*     # Node.js
+            ./aspnet/bin/Release/*      # .NET
+            ./php/dist/*                # PHP
+            ./go/dist/*                 # Go
+            ./python/*.whl              # Python (ou qualquer outro artefato)
+            ./ruby/*.gem                # Ruby (ou qualquer outro artefato)

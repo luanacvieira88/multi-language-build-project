@@ -1,0 +1,17 @@
+name: CI - ASP NET
+
+on:
+  push:
+    branches: [ "dev", "main" ]
+  pull_request:
+    branches: [ "dev", "main" ]
+
+jobs:
+  ci-dotnet:
+    uses: ./.github/workflows/build-reusable.yml
+    with:
+      language: "dotnet"
+      environment: "ci"
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
