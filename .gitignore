@@ -1,0 +1,69 @@
+# ASP.NET / .NET
+aspnet/HelloWorld/bin/
+aspnet/HelloWorld/obj/
+aspnet/HelloWorld.Tests/bin/
+aspnet/HelloWorld.Tests/obj/
+aspnet/**/*.user
+aspnet/**/*.suo
+aspnet/.vs/
+aspnet/*.vspscc
+aspnet/*.vssscc
+
+# Go
+go/bin/
+go/pkg/
+go/*.test
+
+# Java
+java/hello-world/src/main/java/.classpath
+java/hello-world/src/main/java/.project
+java/hello-world/src/main/java/.settings/
+java/hello-world/src/main/java/target/
+java/hello-world/src/main/java/*.log
+
+# Node.js
+nodejs/node_modules/
+nodejs/logs/
+nodejs/*.log
+nodejs/npm-debug.log*
+nodejs/yarn-debug.log*
+nodejs/yarn-error.log*
+nodejs/coverage/
+nodejs/.env
+
+# PHP
+php/vendor/
+php/*.log
+php/.env
+php/.phpunit.result.cache
+
+# Python
+python/__pycache__/
+python/*.pyc
+python/*.pyo
+python/.env
+python/.venv
+python/venv/
+python/env/
+python/.coverage
+python/.mypy_cache/
+python/.pytest_cache/
+python/.tox/
+python/.nox/
+python/build/
+python/dist/
+python/coverage.xml
+
+# Ruby
+ruby/.bundle/
+ruby/vendor/bundle/
+ruby/log/
+ruby/tmp/
+ruby/*.log
+ruby/.env
+ruby/.rvmrc
+ruby/.ruby-version
+ruby/.ruby-gemset
+ruby/*.gem
+ruby/coverage/
+ruby/spec/examples.txt
