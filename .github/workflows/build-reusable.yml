@@ -59,6 +59,10 @@ jobs:
               sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-dom -y
               cd php                #add path para achar composer.json
               composer install
+              echo "path"
+              ls -la 
+              echo "path vendor"
+              ls -la vendor/bin
               ;;
 
             "python")
