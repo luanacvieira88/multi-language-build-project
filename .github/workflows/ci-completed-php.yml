@@ -27,4 +27,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-dom -y
           composer install
-            
+     
+      - name: Run unit tests
+        run: |
+          vendor/bin/phpunit ;;
+          
+      - name: Run SonarQube scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+   
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: "${{ inputs.language }}-build"
+          path: |
+            ./php/dist/*                # PHP
+         
