@@ -30,7 +30,7 @@ jobs:
       - name: Set up environment and install dependencies
         run: |
           case "${{ inputs.language }}" in
-            "PHP")
+            "php")
               echo "Setting up environment for language: ${{ inputs.language }}"
               echo "Setting up PHP... path initial"
               # Mostre o diretório atual
@@ -112,19 +112,19 @@ jobs:
          #     ;;
          # esac
 
-     # - name: Run unit tests
-     #   run: |
-     #     case "${{ inputs.language }}" in
-     #       "php")
-     #         # Mostre o diretório atual
-     #         pwd
-     #         ls -l
-     #         cd php || exit 1  # Certifique-se de que o diretório existe
-     #         echo "Setting up RUNS TESTS... path after cd php"
-     #         pwd
-     #         ls -l
-     #         vendor/bin/phpunit ;;
-     #     esac  
+      - name: Run unit tests
+        run: |
+          case "${{ inputs.language }}" in
+            "php")
+              # Mostre o diretório atual
+              pwd
+              ls -l
+              cd php || exit 1  # Certifique-se de que o diretório existe
+              echo "Setting up RUNS TESTS... path after cd php"
+              pwd
+              ls -l
+              vendor/bin/phpunit ;;
+          esac  
           
         # case "${{ inputs.language }}" in
         #  "node") npm test ;;
