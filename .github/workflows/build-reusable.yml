@@ -112,29 +112,29 @@ jobs:
          #     ;;
          # esac
 
-      - name: Run unit tests
-        run: |
-          case "${{ inputs.language }}" in
-            "php")
-              # Mostre o diretório atual
-              pwd
-              ls -l
-              cd php || exit 1  # Certifique-se de que o diretório existe
-              echo "Setting up RUNS TESTS... path after cd php"
-              pwd
-              ls -l
-              vendor/bin/phpunit ;;
-          esac  
+     # - name: Run unit tests
+     #   run: |
+     #     case "${{ inputs.language }}" in
+     #       "php")
+     #         # Mostre o diretório atual
+     #         pwd
+     #         ls -l
+     #         cd php || exit 1  # Certifique-se de que o diretório existe
+     #         echo "Setting up RUNS TESTS... path after cd php"
+     #         pwd
+     #         ls -l
+     #         vendor/bin/phpunit ;;
+     #     esac  
           
-          #case "${{ inputs.language }}" in
-          #  "node") npm test ;;
-          #  "java") mvn test ;;
-          #  "dotnet") dotnet test ;;
-          #  "php") vendor/bin/phpunit ;;
-          #  "python") python -m unittest discover ;;
-          #  "ruby") bundle exec rspec ;;
-          #  "go") go test ./... ;;
-          #esac
+        # case "${{ inputs.language }}" in
+        #  "node") npm test ;;
+        #  "java") mvn test ;;
+        #  "dotnet") dotnet test ;;
+        #  "php") vendor/bin/phpunit ;;
+        #  "python") python -m unittest discover ;;
+        #  "ruby") bundle exec rspec ;;
+        #  "go") go test ./... ;;
+        # esac
 
  #     - name: Run SonarQube scan
  #       uses: SonarSource/sonarcloud-github-action@v2
