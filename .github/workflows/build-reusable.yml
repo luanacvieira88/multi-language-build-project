@@ -54,9 +54,9 @@ jobs:
             "php")
               echo "Setting up PHP..."
               # sudo apt-get install php-cli php-mbstring -y
-              sudo add-apt-repository ppa:ondrej/php -y #new code for compatibled version PHP 8.2 in composer.lock
-              sudo apt-get update
-              sudo apt-get install php8.2 php8.2-cli php8.2-mbstring -y
+              sudo add-apt-repository ppa:ondrej/php -y
+              sudo apt-get update  #new code for compatibled version PHP 8.2 in composer.lock
+              sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-dom -y
               cd php                #add path para achar composer.json
               composer install
               ;;
