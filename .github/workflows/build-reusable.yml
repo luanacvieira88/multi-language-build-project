@@ -54,6 +54,7 @@ jobs:
             "php")
               echo "Setting up PHP..."
               sudo apt-get install php-cli php-mbstring -y
+              cd php                #add path para achar composer.json
               composer install
               ;;
 
