@@ -54,16 +54,16 @@ jobs:
             "php")
               echo "Setting up PHP... path initial"
               # Mostre o diretório atual
-              pwd
-              ls -l
-              cd php || exit 1  # Certifique-se de que o diretório existe
-              echo "Setting up PHP... path after cd php"
-              pwd
-              ls -l
-              sudo add-apt-repository ppa:ondrej/php -y
-              sudo apt-get update
-              sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-dom -y
-              composer install
+              #pwd
+              #ls -l
+              #cd php || exit 1  # Certifique-se de que o diretório existe
+              #echo "Setting up PHP... path after cd php"
+              #pwd
+              #ls -l
+              #sudo add-apt-repository ppa:ondrej/php -y
+              #sudo apt-get update
+              #sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-dom -y
+              #composer install
               ;;
               
             "python")
