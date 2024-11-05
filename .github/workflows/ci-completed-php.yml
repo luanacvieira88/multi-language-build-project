@@ -30,7 +30,7 @@ jobs:
      
       - name: Run unit tests
         run: |
-          vendor/bin/phpunit ;;
+          vendor/bin/phpunit
           
       - name: Run SonarQube scan
         uses: SonarSource/sonarcloud-github-action@v2
