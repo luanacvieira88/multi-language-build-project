@@ -48,11 +48,27 @@ jobs:
         with:
           args: >
             -Dsonar.exclusions=**/*.java
-   
+
+      - name: Build PHP project
+        run: |
+          echo "Building PHP project..."
+          cd multi-language-build-project/php || exit 1
+          
+          # Criar o diretório de saída
+          mkdir -p dist
+          
+          # Copiar arquivos necessários para o diretório dist
+          # Você pode ajustar os arquivos que deseja copiar
+          cp -R src/* dist/  # Copia todos os arquivos do diretório src para dist
+          
+          # Se você quiser incluir o arquivo composer.json e outros arquivos de configuração
+          cp composer.json dist/
+          cp phpunit.xml dist/
+          echo "Build completed. Artifacts are located in the 'dist' directory."
+       
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: "${{ inputs.language }}-build"
-          path: |
-            ./php/dist/*                # PHP
-         
+          name: php-build-artifacts
+          path: ./multi-language-build-project/php/dist/*
+          
