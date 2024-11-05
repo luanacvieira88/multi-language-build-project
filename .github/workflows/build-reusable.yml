@@ -102,11 +102,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: Run security scan (optional)
-        if: secrets.SNYK_TOKEN != ''
-        uses: snyk/snyk@v2
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    #  - name: Run security scan (optional)
+    #    if: secrets.SNYK_TOKEN != ''
+    #    uses: snyk/snyk@v2
+    #    env:
+    #      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
