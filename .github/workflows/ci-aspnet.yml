@@ -2,9 +2,9 @@ name: CI - ASP NET
 
 on:
   push:
-    branches: [ "dev", "main" ]
+    branches: [ "develop", "main" ]
   pull_request:
-    branches: [ "dev", "main" ]
+    branches: [ "develop", "main" ]
   workflow_dispatch:
 
 jobs:
