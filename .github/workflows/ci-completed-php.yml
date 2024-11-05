@@ -67,6 +67,7 @@ jobs:
           cp composer.json dist/
           cp phpunit.xml dist/
           echo "Build completed. Artifacts are located in the 'dist' directory."
+          ls -la dist/
        
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
