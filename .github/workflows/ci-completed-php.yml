@@ -52,9 +52,11 @@ jobs:
       - name: Build PHP project
         run: |
           echo "Building PHP project..."
-          cd multi-language-build-project/php || exit 1
-          
+          cd php || exit 1
+          pwd
+          ls -la
           # Criar o diretório de saída
+          echo "Criar Diretório"
           mkdir -p dist
           
           # Copiar arquivos necessários para o diretório dist
