@@ -32,23 +32,23 @@ jobs:
           case "${{ inputs.language }}" in
             "node")
               echo "Setting up Node.js..."
-              actions/setup-node@v3
-              npm install
+              #actions/setup-node@v3
+              #npm install
               ;;
 
             "java")
               echo "Setting up Java..."
-              actions/setup-java@v3
-              java-version: '11'
-              mvn clean install
+              #actions/setup-java@v3
+              #java-version: '11'
+              #mvn clean install
               ;;
 
             "dotnet")
               echo "Setting up .NET..."
-              actions/setup-dotnet@v3
-              dotnet-version: '6.0.x'
-              dotnet restore
-              dotnet build
+              #actions/setup-dotnet@v3
+              #dotnet-version: '6.0.x'
+              #dotnet restore
+              #dotnet build
               ;;
 
             "php")
@@ -68,23 +68,23 @@ jobs:
               
             "python")
               echo "Setting up Python..."
-              actions/setup-python@v3
-              python-version: '3.9'
-              pip install -r requirements.txt
+              #actions/setup-python@v3
+              #python-version: '3.9'
+              #pip install -r requirements.txt
               ;;
 
             "ruby")
               echo "Setting up Ruby..."
-              actions/setup-ruby@v3
-              ruby-version: '2.7'
-              bundle install
+              #actions/setup-ruby@v3
+              #ruby-version: '2.7'
+              #bundle install
               ;;
 
             "go")
               echo "Setting up Go..."
-              actions/setup-go@v3
-              go-version: '1.16'
-              go mod tidy
+              #actions/setup-go@v3
+              #go-version: '1.16'
+              #go mod tidy
               ;;
               
             *)
