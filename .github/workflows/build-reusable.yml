@@ -112,17 +112,23 @@ jobs:
          #     ;;
          # esac
 
-#      - name: Run unit tests
-#        run: |
-#          case "${{ inputs.language }}" in
-#            "node") npm test ;;
-#            "java") mvn test ;;
-#            "dotnet") dotnet test ;;
-#            "php") vendor/bin/phpunit ;;
-#            "python") python -m unittest discover ;;
-#            "ruby") bundle exec rspec ;;
-#            "go") go test ./... ;;
-#          esac
+      - name: Run unit tests
+        run: |
+          case "${{ inputs.language }}" in
+            "php")
+              cd php/
+              vendor/bin/phpunit ;;
+          esac  
+          
+          #case "${{ inputs.language }}" in
+          #  "node") npm test ;;
+          #  "java") mvn test ;;
+          #  "dotnet") dotnet test ;;
+          #  "php") vendor/bin/phpunit ;;
+          #  "python") python -m unittest discover ;;
+          #  "ruby") bundle exec rspec ;;
+          #  "go") go test ./... ;;
+          #esac
 
  #     - name: Run SonarQube scan
  #       uses: SonarSource/sonarcloud-github-action@v2
