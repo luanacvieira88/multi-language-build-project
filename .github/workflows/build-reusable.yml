@@ -136,11 +136,11 @@ jobs:
         #  "go") go test ./... ;;
         # esac
 
- #     - name: Run SonarQube scan
- #       uses: SonarSource/sonarcloud-github-action@v2
- #       env:
- #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
- #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Run SonarQube scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     #  - name: Run security scan (optional)
     #    if: secrets.SNYK_TOKEN != ''
