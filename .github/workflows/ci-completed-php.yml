@@ -73,5 +73,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: php-build-artifacts
-          path: ./multi-language-build-project/php/dist/*
+          path: ./php/dist/*
           
