@@ -2,11 +2,15 @@ name: CI Java
 
 on:
   push:
-    branches: [ "dev", "main" ]
+    branches: [ "develop", "main" ]
+    paths:
+      - "java/**"  # Dispara o workflow apenas se houver alterações na pasta "java"
   pull_request:
-    branches: [ "dev", "main" ]
+    branches: [ "develop", "main" ]
+    paths:
+      - "java/**"  # Dispara o workflow apenas se houver alterações na pasta "java"
   workflow_dispatch:
-
+ 
 jobs:
   ci-java:
     uses: ./.github/workflows/build-reusable.yml
@@ -15,4 +19,4 @@ jobs:
       environment: "ci"
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      # SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
