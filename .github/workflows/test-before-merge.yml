@@ -1,0 +1,25 @@
+name: Run Tests Before Merge
+
+on:
+  pull_request:
+    branches:
+      - main  # Ou o branch principal do seu repositório
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Versão do Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
