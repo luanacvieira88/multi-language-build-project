@@ -37,7 +37,19 @@ jobs:
         with:
           args: >
             -Dsonar.exclusions=**/*.java
-      
+
+      - name: Download Quality Gate status
+        run: |
+          curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
+          "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luanacvieira88_multi-language-build-project" \
+          -o sonar-report.json
+
+      - name: Upload SonarCloud Quality Gate report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: sonar-quality-gate-report
+          path: sonar-report.json
+          
       - name: Check SonarCloud Quality Gate status
         run: |
           QUALITY_GATE_STATUS=$(curl -s -u "$SONAR_TOKEN:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luanacvieira88_multi-language-build-project" | jq -r '.projectStatus.status')
@@ -47,6 +59,8 @@ jobs:
           fi
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      
 
       - name: Run unit tests
         run: |
