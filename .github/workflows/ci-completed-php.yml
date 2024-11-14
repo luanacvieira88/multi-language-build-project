@@ -37,6 +37,16 @@ jobs:
         with:
           args: >
             -Dsonar.exclusions=**/*.java
+      
+      - name: Check SonarCloud Quality Gate status
+        run: |
+          QUALITY_GATE_STATUS=$(curl -s -u "$SONAR_TOKEN:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luanacvieira88_multi-language-build-project" | jq -r '.projectStatus.status')
+          if [ "$QUALITY_GATE_STATUS" != "OK" ]; then
+            echo "Quality Gate failed. Exiting with error."
+            exit 1
+          fi
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Run unit tests
         run: |
