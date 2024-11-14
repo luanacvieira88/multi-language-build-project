@@ -19,7 +19,7 @@ mysqli_query($connection, $query);
 
 //function duplicateFunctionAgain() {
   //  echo "This is a duplicate function";
-}
+//}
 
 // Código propositalmente defeituoso
 //$undefinedVariable++;
